@@ -1,4 +1,4 @@
-package com.visiontek.visiontek
+package com.visiontek.official
 
 import io.flutter.embedding.android.FlutterActivity
 

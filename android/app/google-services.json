@@ -1,48 +1,48 @@
 {
   "project_info": {
-    "project_number": "646882350657",
-    "project_id": "visiontek-global",
-    "storage_bucket": "visiontek-global.appspot.com"
+    "project_number": "630226197797",
+    "project_id": "visiontek-official",
+    "storage_bucket": "visiontek-official.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:646882350657:android:5c8f56bedc689ba177d8c0",
+        "mobilesdk_app_id": "1:630226197797:android:a94adbc5a3724e9f7b0ecc",
         "android_client_info": {
-          "package_name": "com.visiontek.visiontek"
+          "package_name": "com.visiontek.official"
         }
       },
       "oauth_client": [
         {
-          "client_id": "646882350657-i5apkg8t83j16iss8kch5abmbl563bmf.apps.googleusercontent.com",
+          "client_id": "630226197797-175meek0ch930qkk47m4p47m555tsh21.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.visiontek.visiontek",
+            "package_name": "com.visiontek.official",
             "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
           }
         },
         {
-          "client_id": "646882350657-i766q76mn821pkb7etv5eln7qsf4bc8h.apps.googleusercontent.com",
+          "client_id": "630226197797-5vfiu1om7rrrmg90j200hvntfd7sk9t3.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBr18obBBUXc0qxah0ylx0phyr-2Tjdf58"
+          "current_key": "AIzaSyAddtZe04OFVjNX5mgWJxjHBPTExvfmvjA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "646882350657-i766q76mn821pkb7etv5eln7qsf4bc8h.apps.googleusercontent.com",
+              "client_id": "630226197797-5vfiu1om7rrrmg90j200hvntfd7sk9t3.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "646882350657-mj0saoitncu952d436r4c0rihfu0g6co.apps.googleusercontent.com",
+              "client_id": "630226197797-0rveilm92tnauc5frttjmej57180e1ee.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.visiontek.visiontek"
+                "bundle_id": "com.visiontek.official"
               }
             }
           ]
