@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>646882350657-mj0saoitncu952d436r4c0rihfu0g6co.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.646882350657-mj0saoitncu952d436r4c0rihfu0g6co</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>646882350657-i5apkg8t83j16iss8kch5abmbl563bmf.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDUJY7TmlBmWfm_CkVn5YSgIJooPvUGPH8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>646882350657</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.visiontek.visiontek</string>
+	<key>PROJECT_ID</key>
+	<string>visiontek-global</string>
+	<key>STORAGE_BUCKET</key>
+	<string>visiontek-global.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:646882350657:ios:bdf19bb54a8dc2b577d8c0</string>
+</dict>
+</plist>
