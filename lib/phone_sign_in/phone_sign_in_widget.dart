@@ -215,7 +215,7 @@ class _PhoneSignInWidgetState extends State<PhoneSignInWidget>
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily:
                                 FlutterFlowTheme.of(context).bodyText1Family,
-                            color: Color(0xFF0F1113),
+                            color: FlutterFlowTheme.of(context).primaryText,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).bodyText1Family),
                           ),

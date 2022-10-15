@@ -15,3 +15,4 @@ export 'marketing_lesson_main/marketing_lesson_main_widget.dart'
     show MarketingLessonMainWidget;
 export 'marketing_details_page/marketing_details_page_widget.dart'
     show MarketingDetailsPageWidget;
+export 'support/support_widget.dart' show SupportWidget;

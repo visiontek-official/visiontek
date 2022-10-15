@@ -215,14 +215,14 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                           ),
                           errorBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: Color(0x00000000),
+                              color: FlutterFlowTheme.of(context).primaryColor,
                               width: 2,
                             ),
                             borderRadius: BorderRadius.circular(50),
                           ),
                           focusedErrorBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: Color(0x00000000),
+                              color: FlutterFlowTheme.of(context).primaryColor,
                               width: 2,
                             ),
                             borderRadius: BorderRadius.circular(50),
@@ -385,14 +385,14 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                           ),
                           errorBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: Color(0x00000000),
+                              color: FlutterFlowTheme.of(context).primaryColor,
                               width: 2,
                             ),
                             borderRadius: BorderRadius.circular(16),
                           ),
                           focusedErrorBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: Color(0x00000000),
+                              color: FlutterFlowTheme.of(context).primaryColor,
                               width: 2,
                             ),
                             borderRadius: BorderRadius.circular(16),
@@ -417,9 +417,10 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                             final usersUpdateData = createUsersRecordData(
                               displayName: yourNameController!.text,
                               photoUrl: uploadedFileUrl,
-                              state: stateValue,
-                              bio: myBioController!.text,
-                              city: cityController!.text,
+                              email: '',
+                              state: '',
+                              bio: '',
+                              city: '',
                             );
                             await currentUserReference!.update(usersUpdateData);
 

@@ -144,6 +144,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'MarketingDetailsPage',
               path: 'marketingDetailsPage',
               builder: (context, params) => MarketingDetailsPageWidget(),
+            ),
+            FFRoute(
+              name: 'Support',
+              path: 'support',
+              builder: (context, params) => SupportWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
@@ -317,9 +322,9 @@ class FFRoute {
               : builder(context, ffParams);
           final child = appStateNotifier.loading
               ? Container(
-                  color: FlutterFlowTheme.of(context).lineColor,
+                  color: FlutterFlowTheme.of(context).primaryBackground,
                   child: Image.asset(
-                    'assets/images/VisionTEK_Logo_2021_-_White_-_Small_-_transparent.png',
+                    'assets/images/Newark_Consulting.gif',
                     fit: BoxFit.contain,
                   ),
                 )

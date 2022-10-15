@@ -1,3 +1,4 @@
+import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -41,11 +42,25 @@ class _MarketingLessonMainWidgetState extends State<MarketingLessonMainWidget> {
         desktop: false,
       )
           ? AppBar(
-              backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+              backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
               automaticallyImplyLeading: false,
+              leading: FlutterFlowIconButton(
+                borderColor: Colors.transparent,
+                borderRadius: 30,
+                borderWidth: 1,
+                buttonSize: 60,
+                icon: Icon(
+                  Icons.arrow_back_rounded,
+                  color: Colors.white,
+                  size: 30,
+                ),
+                onPressed: () async {
+                  context.pop();
+                },
+              ),
               title: Text(
                 'Our Services',
-                style: FlutterFlowTheme.of(context).title1,
+                style: FlutterFlowTheme.of(context).title2,
               ),
               actions: [],
               centerTitle: false,

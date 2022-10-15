@@ -7,7 +7,6 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
 
 class HomePageWebsiteWidget extends StatefulWidget {
   const HomePageWebsiteWidget({Key? key}) : super(key: key);
@@ -26,18 +25,6 @@ class _HomePageWebsiteWidgetState extends State<HomePageWebsiteWidget>
           curve: Curves.easeIn,
           delay: 0.ms,
           duration: 1510.ms,
-          begin: 0,
-          end: 1,
-        ),
-      ],
-    ),
-    'lottieAnimationOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
           begin: 0,
           end: 1,
         ),
@@ -92,15 +79,12 @@ class _HomePageWebsiteWidgetState extends State<HomePageWebsiteWidget>
               ),
             Align(
               alignment: AlignmentDirectional(0, 0),
-              child: Lottie.network(
-                'https://assets5.lottiefiles.com/packages/lf20_7PxfaMTzmW.json',
-                width: 150,
-                height: 130,
+              child: Image.asset(
+                'assets/images/Newark_Consulting.gif',
+                width: 300,
+                height: 100,
                 fit: BoxFit.cover,
-                frameRate: FrameRate(0),
-                animate: true,
-              ).animateOnPageLoad(
-                  animationsMap['lottieAnimationOnPageLoadAnimation']!),
+              ),
             ),
             FlutterFlowWebView(
               url: 'https://www.visiontek.co.za/app',
@@ -108,6 +92,14 @@ class _HomePageWebsiteWidgetState extends State<HomePageWebsiteWidget>
               height: MediaQuery.of(context).size.height * 1,
               verticalScroll: false,
               horizontalScroll: false,
+            ),
+            Align(
+              alignment: AlignmentDirectional(0, 0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                ),
+              ),
             ),
           ],
         ),
