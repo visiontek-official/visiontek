@@ -317,13 +317,10 @@ class FFRoute {
               : builder(context, ffParams);
           final child = appStateNotifier.loading
               ? Container(
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  child: Center(
-                    child: Image.asset(
-                      'assets/images/Untitled-1.png',
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      fit: BoxFit.contain,
-                    ),
+                  color: FlutterFlowTheme.of(context).lineColor,
+                  child: Image.asset(
+                    'assets/images/VisionTEK_Logo_2021_-_White_-_Small_-_transparent.png',
+                    fit: BoxFit.contain,
                   ),
                 )
               : page;

@@ -394,15 +394,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                         return;
                                       }
 
-                                      if (currentUserEmailVerified) {
-                                        context.pushNamedAuth(
-                                            'HomePage', mounted);
-                                      } else {
-                                        return;
-                                      }
-
-                                      context.pushNamedAuth(
-                                          'HomePage', mounted);
+                                      context.goNamedAuth('HomePage', mounted);
                                     },
                                     text: 'Sign In',
                                     options: FFButtonOptions(
@@ -501,33 +493,28 @@ class _SignInWidgetState extends State<SignInWidget> {
                                       if (user == null) {
                                         return;
                                       }
-                                      if (currentUserEmailVerified) {
-                                        context.pushNamedAuth(
-                                            'HomePage', mounted);
-                                      } else {
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: Text('Error'),
-                                              content:
-                                                  Text('Account not valid'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: Text('Ok'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        );
-                                        return;
-                                      }
 
-                                      context.pushNamedAuth(
-                                          'HomePage', mounted);
+                                      context.goNamedAuth('HomePage', mounted);
+                                    },
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      8, 8, 8, 8),
+                                  child: FlutterFlowIconButton(
+                                    borderColor: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    borderRadius: 12,
+                                    borderWidth: 2,
+                                    buttonSize: 44,
+                                    icon: Icon(
+                                      Icons.phone,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      size: 18,
+                                    ),
+                                    onPressed: () async {
+                                      context.pushNamed('phoneVerify');
                                     },
                                   ),
                                 ),

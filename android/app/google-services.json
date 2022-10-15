@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "630226197797-3kfsuafprlhjrcg13v21i4ht106uu9mp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.visiontek.official",
+            "certificate_hash": "2aee31d78fc109146fd49a79b577a003264ab126"
+          }
+        },
+        {
           "client_id": "630226197797-5vfiu1om7rrrmg90j200hvntfd7sk9t3.apps.googleusercontent.com",
           "client_type": 3
         }
