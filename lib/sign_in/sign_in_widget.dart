@@ -514,7 +514,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                       size: 18,
                                     ),
                                     onPressed: () async {
-                                      context.pushNamed('phoneVerify');
+                                      context.pushNamed('phoneSignIn');
                                     },
                                   ),
                                 ),
