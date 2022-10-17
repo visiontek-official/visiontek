@@ -98,7 +98,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                       GoRouter.of(context).prepareAuthEvent();
                       await signOut();
 
-                      context.goNamedAuth('signIn', mounted);
+                      context.goNamedAuth('EntryPage', mounted);
                     },
                   ),
                 ),

@@ -63,10 +63,10 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                       borderRadius: 30,
                       borderWidth: 1,
                       buttonSize: 60,
-                      icon: FaIcon(
-                        FontAwesomeIcons.home,
-                        color: Color(0xCAE41253),
-                        size: 25,
+                      icon: Icon(
+                        Icons.notifications_none,
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        size: 30,
                       ),
                       onPressed: () {
                         print('IconButton pressed ...');
@@ -77,10 +77,10 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                       borderRadius: 30,
                       borderWidth: 1,
                       buttonSize: 60,
-                      icon: Icon(
-                        Icons.notifications_none,
-                        color: Color(0xFF3F3F3F),
-                        size: 30,
+                      icon: FaIcon(
+                        FontAwesomeIcons.atlas,
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        size: 25,
                       ),
                       onPressed: () {
                         print('IconButton pressed ...');
@@ -90,30 +90,25 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                       width: 100,
                       height: 100,
                       decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            FlutterFlowTheme.of(context).primaryColor,
-                            Color(0xCAE41253)
-                          ],
-                          stops: [0, 1],
-                          begin: AlignmentDirectional(0.34, -1),
-                          end: AlignmentDirectional(-0.34, 1),
-                        ),
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
                         shape: BoxShape.circle,
                       ),
-                      child: FlutterFlowIconButton(
-                        borderColor: Colors.transparent,
-                        borderRadius: 30,
-                        borderWidth: 1,
-                        buttonSize: 100,
-                        icon: Icon(
-                          Icons.add,
-                          color: Colors.white,
-                          size: 30,
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 2, 5),
+                        child: FlutterFlowIconButton(
+                          borderColor: Colors.transparent,
+                          borderRadius: 30,
+                          borderWidth: 1,
+                          buttonSize: 100,
+                          icon: Icon(
+                            Icons.home,
+                            color: FlutterFlowTheme.of(context).tertiaryColor,
+                            size: 20,
+                          ),
+                          onPressed: () {
+                            print('IconButton pressed ...');
+                          },
                         ),
-                        onPressed: () {
-                          print('IconButton pressed ...');
-                        },
                       ),
                     ),
                     FlutterFlowIconButton(
@@ -121,9 +116,9 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                       borderRadius: 30,
                       borderWidth: 1,
                       buttonSize: 60,
-                      icon: Icon(
-                        Icons.chat_bubble_outline_rounded,
-                        color: Color(0xFF3F3F3F),
+                      icon: FaIcon(
+                        FontAwesomeIcons.comments,
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
                         size: 30,
                       ),
                       onPressed: () {
@@ -137,7 +132,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                       buttonSize: 60,
                       icon: Icon(
                         Icons.person_outline,
-                        color: Color(0xFF3F3F3F),
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
                         size: 30,
                       ),
                       onPressed: () {

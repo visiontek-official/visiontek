@@ -2,6 +2,7 @@ import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../backend/firebase_storage/storage.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
+import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -32,9 +33,11 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
   @override
   void initState() {
     super.initState();
-    cityController = TextEditingController();
-    yourNameController = TextEditingController();
-    myBioController = TextEditingController();
+    cityController = TextEditingController(
+        text: valueOrDefault(currentUserDocument?.city, ''));
+    yourNameController = TextEditingController(text: currentUserDisplayName);
+    myBioController = TextEditingController(
+        text: valueOrDefault(currentUserDocument?.bio, ''));
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -59,13 +62,26 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
           ? AppBar(
               backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
               automaticallyImplyLeading: false,
+              leading: FlutterFlowIconButton(
+                borderColor: Colors.transparent,
+                borderRadius: 30,
+                borderWidth: 1,
+                buttonSize: 60,
+                icon: Icon(
+                  Icons.arrow_back_rounded,
+                  color: Colors.white,
+                  size: 30,
+                ),
+                onPressed: () {
+                  print('IconButton pressed ...');
+                },
+              ),
               title: Text(
-                'Create Profile',
+                'Page Title',
                 style: FlutterFlowTheme.of(context).title2,
               ),
               actions: [],
               centerTitle: false,
-              elevation: 0,
             )
           : null,
       body: SafeArea(
@@ -192,220 +208,235 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                     ),
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 16),
-                      child: TextFormField(
-                        controller: yourNameController,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          labelText: 'Your Name',
-                          labelStyle: FlutterFlowTheme.of(context).bodyText2,
-                          hintStyle: FlutterFlowTheme.of(context).bodyText2,
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              width: 2,
+                      child: AuthUserStreamWidget(
+                        child: TextFormField(
+                          controller: yourNameController,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            labelText: 'Your Name',
+                            labelStyle: FlutterFlowTheme.of(context).bodyText2,
+                            hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(50),
                             ),
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              width: 2,
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(50),
                             ),
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primaryColor,
-                              width: 2,
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(50),
                             ),
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                          focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primaryColor,
-                              width: 2,
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(50),
                             ),
-                            borderRadius: BorderRadius.circular(50),
+                            filled: true,
+                            fillColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            contentPadding:
+                                EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
                           ),
-                          filled: true,
-                          fillColor:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          contentPadding:
-                              EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
+                          style: FlutterFlowTheme.of(context).bodyText1,
                         ),
-                        style: FlutterFlowTheme.of(context).bodyText1,
                       ),
                     ),
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 16),
-                      child: TextFormField(
-                        controller: cityController,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          labelText: 'Your City',
-                          labelStyle: FlutterFlowTheme.of(context).bodyText2,
-                          hintStyle: FlutterFlowTheme.of(context).bodyText2,
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              width: 2,
+                      child: AuthUserStreamWidget(
+                        child: TextFormField(
+                          controller: cityController,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            labelText: 'Your City',
+                            labelStyle: FlutterFlowTheme.of(context).bodyText2,
+                            hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(50),
                             ),
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              width: 2,
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(50),
                             ),
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primaryColor,
-                              width: 2,
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(50),
                             ),
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                          focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primaryColor,
-                              width: 2,
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(50),
                             ),
-                            borderRadius: BorderRadius.circular(50),
+                            filled: true,
+                            fillColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            contentPadding:
+                                EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
                           ),
-                          filled: true,
-                          fillColor:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          contentPadding:
-                              EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
+                          style: FlutterFlowTheme.of(context).bodyText1,
                         ),
-                        style: FlutterFlowTheme.of(context).bodyText1,
                       ),
                     ),
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 12),
-                      child: FlutterFlowDropDown(
-                        initialOption: stateValue ??= 'State',
-                        options: [
-                          'State',
-                          'Alabama',
-                          'Alaska',
-                          'Arizona',
-                          'Arkansas',
-                          'California',
-                          'Colorado',
-                          'Connecticut',
-                          'Delaware',
-                          'Florida',
-                          'Georgia',
-                          'Hawaii',
-                          'Idaho',
-                          'Illinoi',
-                          'Indiana',
-                          'Iowa',
-                          'Kansas',
-                          'Kentucky',
-                          'Louisiana',
-                          'Maine',
-                          'Maryland',
-                          'Massachusetts',
-                          'Michigan',
-                          'Minnesota',
-                          'Mississippi',
-                          'Missouri',
-                          'Monta',
-                          'Nebraska',
-                          'Nevada',
-                          'New Hampshire',
-                          'New Jersey',
-                          'New Mexico',
-                          'New York',
-                          'North Carolina',
-                          'North Dak',
-                          'Ohio',
-                          'Oklahoma',
-                          'Oregon',
-                          'Pennsylvani',
-                          'Rhode Island',
-                          'South Caroli',
-                          'South Dakota',
-                          'Tennessee',
-                          'Texas',
-                          'Utah',
-                          'Vermont',
-                          'Virginia',
-                          'Washingto',
-                          'West Virginia',
-                          'Wisconsin',
-                          'Wyoming',
-                          'South Africa'
-                        ],
-                        onChanged: (val) => setState(() => stateValue = val),
-                        width: double.infinity,
-                        height: 56,
-                        textStyle: FlutterFlowTheme.of(context).bodyText1,
-                        hintText: 'Select State',
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          size: 15,
+                      child: AuthUserStreamWidget(
+                        child: FlutterFlowDropDown(
+                          initialOption: stateValue ??=
+                              valueOrDefault(currentUserDocument?.state, ''),
+                          options: [
+                            'State',
+                            'Alabama',
+                            'Alaska',
+                            'Arizona',
+                            'Arkansas',
+                            'California',
+                            'Colorado',
+                            'Connecticut',
+                            'Delaware',
+                            'Florida',
+                            'Georgia',
+                            'Hawaii',
+                            'Idaho',
+                            'Illinoi',
+                            'Indiana',
+                            'Iowa',
+                            'Kansas',
+                            'Kentucky',
+                            'Louisiana',
+                            'Maine',
+                            'Maryland',
+                            'Massachusetts',
+                            'Michigan',
+                            'Minnesota',
+                            'Mississippi',
+                            'Missouri',
+                            'Monta',
+                            'Nebraska',
+                            'Nevada',
+                            'New Hampshire',
+                            'New Jersey',
+                            'New Mexico',
+                            'New York',
+                            'North Carolina',
+                            'North Dak',
+                            'Ohio',
+                            'Oklahoma',
+                            'Oregon',
+                            'Pennsylvani',
+                            'Rhode Island',
+                            'South Caroli',
+                            'South Dakota',
+                            'Tennessee',
+                            'Texas',
+                            'Utah',
+                            'Vermont',
+                            'Virginia',
+                            'Washingto',
+                            'West Virginia',
+                            'Wisconsin',
+                            'Wyoming',
+                            'South Africa'
+                          ],
+                          onChanged: (val) => setState(() => stateValue = val),
+                          width: double.infinity,
+                          height: 56,
+                          textStyle: FlutterFlowTheme.of(context).bodyText1,
+                          hintText: 'Select State',
+                          icon: Icon(
+                            Icons.keyboard_arrow_down_rounded,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 15,
+                          ),
+                          fillColor:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          elevation: 2,
+                          borderColor: FlutterFlowTheme.of(context).primaryText,
+                          borderWidth: 2,
+                          borderRadius: 50,
+                          margin: EdgeInsetsDirectional.fromSTEB(20, 4, 12, 4),
+                          hidesUnderline: true,
                         ),
-                        fillColor:
-                            FlutterFlowTheme.of(context).secondaryBackground,
-                        elevation: 2,
-                        borderColor: FlutterFlowTheme.of(context).primaryText,
-                        borderWidth: 2,
-                        borderRadius: 50,
-                        margin: EdgeInsetsDirectional.fromSTEB(20, 4, 12, 4),
-                        hidesUnderline: true,
                       ),
                     ),
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 12),
-                      child: TextFormField(
-                        controller: myBioController,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          labelStyle: FlutterFlowTheme.of(context).bodyText2,
-                          hintText: 'Your bio',
-                          hintStyle: FlutterFlowTheme.of(context).bodyText2,
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              width: 2,
+                      child: AuthUserStreamWidget(
+                        child: TextFormField(
+                          controller: myBioController,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            labelStyle: FlutterFlowTheme.of(context).bodyText2,
+                            hintText: 'Your bio',
+                            hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(16),
                             ),
-                            borderRadius: BorderRadius.circular(16),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              width: 2,
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(16),
                             ),
-                            borderRadius: BorderRadius.circular(16),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primaryColor,
-                              width: 2,
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(16),
                             ),
-                            borderRadius: BorderRadius.circular(16),
-                          ),
-                          focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primaryColor,
-                              width: 2,
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(16),
                             ),
-                            borderRadius: BorderRadius.circular(16),
+                            filled: true,
+                            fillColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            contentPadding:
+                                EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
                           ),
-                          filled: true,
-                          fillColor:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          contentPadding:
-                              EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
+                          style: FlutterFlowTheme.of(context).bodyText1,
+                          textAlign: TextAlign.start,
+                          maxLines: 3,
                         ),
-                        style: FlutterFlowTheme.of(context).bodyText1,
-                        textAlign: TextAlign.start,
-                        maxLines: 3,
                       ),
                     ),
                     Align(

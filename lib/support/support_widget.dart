@@ -216,7 +216,7 @@ class _SupportWidgetState extends State<SupportWidget> {
                                 ),
                                 onPressed: () async {
                                   await launchURL(
-                                      'linkedin.com/company/visiontekglobal');
+                                      'https://www.linkedin.com/company/visiontekglobal');
                                 },
                               ),
                             ),

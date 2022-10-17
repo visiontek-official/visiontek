@@ -16,3 +16,4 @@ export 'marketing_lesson_main/marketing_lesson_main_widget.dart'
 export 'marketing_details_page/marketing_details_page_widget.dart'
     show MarketingDetailsPageWidget;
 export 'support/support_widget.dart' show SupportWidget;
+export 'entry_page/entry_page_widget.dart' show EntryPageWidget;

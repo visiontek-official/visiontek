@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
 
 class HomePageWesiteSupportWidget extends StatefulWidget {
   const HomePageWesiteSupportWidget({Key? key}) : super(key: key);
@@ -32,18 +32,6 @@ class _HomePageWesiteSupportWidgetState
         ),
       ],
     ),
-    'lottieAnimationOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0,
-          end: 1,
-        ),
-      ],
-    ),
   };
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -58,7 +46,6 @@ class _HomePageWesiteSupportWidgetState
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Stack(
@@ -91,18 +78,6 @@ class _HomePageWesiteSupportWidgetState
                 ).animateOnPageLoad(
                     animationsMap['containerOnPageLoadAnimation']!),
               ),
-            Align(
-              alignment: AlignmentDirectional(0, 0),
-              child: Lottie.network(
-                'https://assets5.lottiefiles.com/packages/lf20_7PxfaMTzmW.json',
-                width: 150,
-                height: 130,
-                fit: BoxFit.cover,
-                frameRate: FrameRate(0),
-                animate: true,
-              ).animateOnPageLoad(
-                  animationsMap['lottieAnimationOnPageLoadAnimation']!),
-            ),
             FlutterFlowWebView(
               url: 'https://visiontek.tawk.help/',
               bypass: false,

@@ -69,13 +69,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, _) =>
-          appStateNotifier.loggedIn ? NavBarPage() : SignInWidget(),
+          appStateNotifier.loggedIn ? NavBarPage() : EntryPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? NavBarPage() : SignInWidget(),
+              appStateNotifier.loggedIn ? NavBarPage() : EntryPageWidget(),
           routes: [
             FFRoute(
               name: 'signIn',
@@ -117,9 +117,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'HomePageWebsite',
               path: 'homePageWebsite',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'HomePageWebsite')
-                  : HomePageWebsiteWidget(),
+              builder: (context, params) => HomePageWebsiteWidget(),
             ),
             FFRoute(
               name: 'HomePageWesiteSupport',
@@ -149,6 +147,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'Support',
               path: 'support',
               builder: (context, params) => SupportWidget(),
+            ),
+            FFRoute(
+              name: 'EntryPage',
+              path: 'entryPage',
+              builder: (context, params) => EntryPageWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
@@ -308,7 +311,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.location);
-            return '/signIn';
+            return '/entryPage';
           }
           return null;
         },
