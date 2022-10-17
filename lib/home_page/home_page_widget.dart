@@ -89,7 +89,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                               fontFamily:
                                   FlutterFlowTheme.of(context).title2Family,
                               color: FlutterFlowTheme.of(context).tertiaryColor,
-                              fontSize: 20,
+                              fontSize: 15,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context).title2Family),
                             ),
@@ -239,6 +239,16 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(8),
+                                      child: CachedNetworkImage(
+                                        imageUrl:
+                                            'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/onboarding-flow-6tzaqf/assets/cevsqrd0vh8t/layout_2.jpg',
+                                        width: double.infinity,
+                                        height: 160,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
                                     ClipRRect(
                                       borderRadius: BorderRadius.circular(8),
                                       child: CachedNetworkImage(
