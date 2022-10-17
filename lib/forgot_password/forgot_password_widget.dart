@@ -20,6 +20,25 @@ class ForgotPasswordWidget extends StatefulWidget {
 class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget>
     with TickerProviderStateMixin {
   final animationsMap = {
+    'columnOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.elasticOut,
+          delay: 300.ms,
+          duration: 900.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.elasticOut,
+          delay: 300.ms,
+          duration: 900.ms,
+          begin: Offset(71, 0),
+          end: Offset(0, 0),
+        ),
+      ],
+    ),
     'textOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
@@ -46,12 +65,6 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget>
   @override
   void initState() {
     super.initState();
-    setupAnimations(
-      animationsMap.values.where((anim) =>
-          anim.trigger == AnimationTrigger.onActionTrigger ||
-          !anim.applyInitialState),
-      this,
-    );
 
     emailAddressController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -274,7 +287,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget>
               ),
             ),
           ],
-        ),
+        ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
       ),
     );
   }

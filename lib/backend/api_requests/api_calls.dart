@@ -6,10 +6,10 @@ export 'api_manager.dart' show ApiCallResponse;
 
 const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
-class WordpressPostsCall {
+class WordpressAllPostsAPICall {
   static Future<ApiCallResponse> call() {
     return ApiManager.instance.makeApiCall(
-      callName: 'Wordpress posts',
+      callName: 'WordpressAllPostsAPI',
       apiUrl: 'https://www.visiontek.co.za/wp-json/wp/v2/posts',
       callType: ApiCallType.GET,
       headers: {},
@@ -18,39 +18,39 @@ class WordpressPostsCall {
     );
   }
 
-  static dynamic postsTitle(dynamic response) => getJsonField(
+  static dynamic id(dynamic response) => getJsonField(
+        response,
+        r'''$..id''',
+        true,
+      );
+  static dynamic title(dynamic response) => getJsonField(
+        response,
+        r'''$..title["rendered"]''',
+        true,
+      );
+  static dynamic content(dynamic response) => getJsonField(
+        response,
+        r'''$..content["rendered"]''',
+        true,
+      );
+  static dynamic imageUrl(dynamic response) => getJsonField(
+        response,
+        r'''$..fimg_url''',
+        true,
+      );
+  static dynamic slug(dynamic response) => getJsonField(
         response,
         r'''$[:].slug''',
         true,
       );
-  static dynamic postsDateandTime(dynamic response) => getJsonField(
+  static dynamic content2(dynamic response) => getJsonField(
         response,
-        r'''$[:].modified_gmt''',
+        r'''$[:].excerpt.rendered''',
         true,
       );
-  static dynamic postsTitle2(dynamic response) => getJsonField(
+  static dynamic date(dynamic response) => getJsonField(
         response,
-        r'''$[:].title.rendered''',
-        true,
-      );
-  static dynamic postsLink1(dynamic response) => getJsonField(
-        response,
-        r'''$[:]._links.self[:].href''',
-        true,
-      );
-  static dynamic postsLink2(dynamic response) => getJsonField(
-        response,
-        r'''$[:].link''',
-        true,
-      );
-  static dynamic featuredMedia1(dynamic response) => getJsonField(
-        response,
-        r'''$[:].featured_media''',
-        true,
-      );
-  static dynamic featuredMedia2(dynamic response) => getJsonField(
-        response,
-        r'''$[:].jetpack_featured_media_url''',
+        r'''$[:].date''',
         true,
       );
 }

@@ -1,6 +1,7 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../backend/firebase_storage/storage.dart';
+import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -10,6 +11,8 @@ import '../flutter_flow/upload_media.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -20,7 +23,29 @@ class CreateProfileWidget extends StatefulWidget {
   _CreateProfileWidgetState createState() => _CreateProfileWidgetState();
 }
 
-class _CreateProfileWidgetState extends State<CreateProfileWidget> {
+class _CreateProfileWidgetState extends State<CreateProfileWidget>
+    with TickerProviderStateMixin {
+  final animationsMap = {
+    'columnOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.elasticOut,
+          delay: 300.ms,
+          duration: 900.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.elasticOut,
+          delay: 300.ms,
+          duration: 900.ms,
+          begin: Offset(71, 0),
+          end: Offset(0, 0),
+        ),
+      ],
+    ),
+  };
   bool isMediaUploading = false;
   String uploadedFileUrl = '';
 
@@ -33,6 +58,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
   @override
   void initState() {
     super.initState();
+
     cityController = TextEditingController(
         text: valueOrDefault(currentUserDocument?.city, ''));
     yourNameController = TextEditingController(text: currentUserDisplayName);
@@ -487,7 +513,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                 ),
               ),
             ],
-          ),
+          ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
         ),
       ),
     );

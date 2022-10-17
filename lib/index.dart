@@ -1,4 +1,5 @@
 // Export pages
+export 'entry_page/entry_page_widget.dart' show EntryPageWidget;
 export 'sign_in/sign_in_widget.dart' show SignInWidget;
 export 'sign_up/sign_up_widget.dart' show SignUpWidget;
 export 'create_profile/create_profile_widget.dart' show CreateProfileWidget;
@@ -16,4 +17,5 @@ export 'marketing_lesson_main/marketing_lesson_main_widget.dart'
 export 'marketing_details_page/marketing_details_page_widget.dart'
     show MarketingDetailsPageWidget;
 export 'support/support_widget.dart' show SupportWidget;
-export 'entry_page/entry_page_widget.dart' show EntryPageWidget;
+export 'home_page_copy/home_page_copy_widget.dart' show HomePageCopyWidget;
+export 'posts/posts_widget.dart' show PostsWidget;

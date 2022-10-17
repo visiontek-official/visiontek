@@ -8,7 +8,6 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
 
 class HomePageWebsiteWidget extends StatefulWidget {
   const HomePageWebsiteWidget({Key? key}) : super(key: key);
@@ -20,15 +19,22 @@ class HomePageWebsiteWidget extends StatefulWidget {
 class _HomePageWebsiteWidgetState extends State<HomePageWebsiteWidget>
     with TickerProviderStateMixin {
   final animationsMap = {
-    'lottieAnimationOnPageLoadAnimation': AnimationInfo(
+    'webViewOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
-        ScaleEffect(
-          curve: Curves.bounceOut,
-          delay: 0.ms,
-          duration: 910.ms,
-          begin: -1,
+        FadeEffect(
+          curve: Curves.elasticOut,
+          delay: 300.ms,
+          duration: 900.ms,
+          begin: 0,
           end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.elasticOut,
+          delay: 300.ms,
+          duration: 900.ms,
+          begin: Offset(71, 0),
+          end: Offset(0, 0),
         ),
       ],
     ),
@@ -53,16 +59,13 @@ class _HomePageWebsiteWidgetState extends State<HomePageWebsiteWidget>
           child: Stack(
             children: [
               Align(
-                alignment: AlignmentDirectional(0, -0.2),
-                child: Lottie.asset(
-                  'assets/lottie_animations/visiontek-preloader.json',
-                  width: 150,
-                  height: 130,
+                alignment: AlignmentDirectional(0, 0),
+                child: Image.asset(
+                  'assets/images/Android-Loader-Navy.gif',
+                  width: 100,
+                  height: 100,
                   fit: BoxFit.cover,
-                  reverse: true,
-                  animate: false,
-                ).animateOnPageLoad(
-                    animationsMap['lottieAnimationOnPageLoadAnimation']!),
+                ),
               ),
               FlutterFlowWebView(
                 url: 'https://www.visiontek.co.za/app',
@@ -70,7 +73,7 @@ class _HomePageWebsiteWidgetState extends State<HomePageWebsiteWidget>
                 height: MediaQuery.of(context).size.height * 1,
                 verticalScroll: false,
                 horizontalScroll: false,
-              ),
+              ).animateOnPageLoad(animationsMap['webViewOnPageLoadAnimation']!),
             ],
           ),
         ),

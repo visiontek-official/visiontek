@@ -78,6 +78,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? NavBarPage() : EntryPageWidget(),
           routes: [
             FFRoute(
+              name: 'EntryPage',
+              path: 'entryPage',
+              builder: (context, params) => EntryPageWidget(),
+            ),
+            FFRoute(
               name: 'signIn',
               path: 'signIn',
               builder: (context, params) => SignInWidget(),
@@ -117,7 +122,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'HomePageWebsite',
               path: 'homePageWebsite',
-              builder: (context, params) => HomePageWebsiteWidget(),
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'HomePageWebsite')
+                  : HomePageWebsiteWidget(),
             ),
             FFRoute(
               name: 'HomePageWesiteSupport',
@@ -136,12 +143,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'MarketingLessonMain',
               path: 'marketingLessonMain',
-              builder: (context, params) => MarketingLessonMainWidget(),
+              builder: (context, params) => MarketingLessonMainWidget(
+                id: params.getParam('id', ParamType.int),
+                title: params.getParam('title', ParamType.String),
+                featureimg: params.getParam('featureimg', ParamType.String),
+                content: params.getParam('content', ParamType.String),
+                date: params.getParam('date', ParamType.String),
+              ),
             ),
             FFRoute(
               name: 'MarketingDetailsPage',
               path: 'marketingDetailsPage',
-              builder: (context, params) => MarketingDetailsPageWidget(),
+              builder: (context, params) => MarketingDetailsPageWidget(
+                id: params.getParam('id', ParamType.int),
+                title: params.getParam('title', ParamType.String),
+                featureimg: params.getParam('featureimg', ParamType.String),
+                content: params.getParam('content', ParamType.String),
+                date: params.getParam('date', ParamType.String),
+              ),
             ),
             FFRoute(
               name: 'Support',
@@ -149,9 +168,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => SupportWidget(),
             ),
             FFRoute(
-              name: 'EntryPage',
-              path: 'entryPage',
-              builder: (context, params) => EntryPageWidget(),
+              name: 'HomePageCopy',
+              path: 'homePageCopy',
+              builder: (context, params) => HomePageCopyWidget(),
+            ),
+            FFRoute(
+              name: 'Posts',
+              path: 'posts',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'Posts')
+                  : PostsWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

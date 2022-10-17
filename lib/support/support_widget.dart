@@ -1,7 +1,10 @@
+import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,7 +16,29 @@ class SupportWidget extends StatefulWidget {
   _SupportWidgetState createState() => _SupportWidgetState();
 }
 
-class _SupportWidgetState extends State<SupportWidget> {
+class _SupportWidgetState extends State<SupportWidget>
+    with TickerProviderStateMixin {
+  final animationsMap = {
+    'columnOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.elasticOut,
+          delay: 300.ms,
+          duration: 900.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.elasticOut,
+          delay: 300.ms,
+          duration: 900.ms,
+          begin: Offset(71, 0),
+          end: Offset(0, 0),
+        ),
+      ],
+    ),
+  };
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -67,7 +92,7 @@ class _SupportWidgetState extends State<SupportWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Image.asset(
-                  'assets/images/contact-us-customer-support-enquiry-hotline-concept.jpg',
+                  'assets/images/Screenshot_2022-10-17_123809.png',
                   width: MediaQuery.of(context).size.width,
                   height: 230,
                   fit: BoxFit.cover,
@@ -272,7 +297,7 @@ class _SupportWidgetState extends State<SupportWidget> {
             ),
           ],
         ),
-      ),
+      ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
     );
   }
 }

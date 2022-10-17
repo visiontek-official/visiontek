@@ -20,15 +20,22 @@ class HomePageWesiteSupportWidget extends StatefulWidget {
 class _HomePageWesiteSupportWidgetState
     extends State<HomePageWesiteSupportWidget> with TickerProviderStateMixin {
   final animationsMap = {
-    'containerOnPageLoadAnimation': AnimationInfo(
+    'webViewOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
         FadeEffect(
-          curve: Curves.easeIn,
-          delay: 0.ms,
-          duration: 1510.ms,
+          curve: Curves.elasticOut,
+          delay: 300.ms,
+          duration: 900.ms,
           begin: 0,
           end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.elasticOut,
+          delay: 300.ms,
+          duration: 900.ms,
+          begin: Offset(71, 0),
+          end: Offset(0, 0),
         ),
       ],
     ),
@@ -50,41 +57,22 @@ class _HomePageWesiteSupportWidgetState
         onTap: () => FocusScope.of(context).unfocus(),
         child: Stack(
           children: [
-            if (responsiveVisibility(
-              context: context,
-              phone: false,
-              tablet: false,
-              tabletLandscape: false,
-              desktop: false,
-            ))
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(150, 250, 0, 0),
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * 0.5,
-                  constraints: BoxConstraints(
-                    maxWidth: MediaQuery.of(context).size.width * 0.25,
-                    maxHeight: MediaQuery.of(context).size.height * 0.1,
-                  ),
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: Image.asset(
-                        'assets/images/VisionTEK_Logo_2021_-_Small_-_transparent-andoid-app-icon.png',
-                      ).image,
-                    ),
-                    shape: BoxShape.rectangle,
-                  ),
-                ).animateOnPageLoad(
-                    animationsMap['containerOnPageLoadAnimation']!),
+            Align(
+              alignment: AlignmentDirectional(0, 0),
+              child: Image.asset(
+                'assets/images/Android-Loader-Navy.gif',
+                width: 100,
+                height: 100,
+                fit: BoxFit.cover,
               ),
+            ),
             FlutterFlowWebView(
               url: 'https://visiontek.tawk.help/',
               bypass: false,
               height: MediaQuery.of(context).size.height * 1,
               verticalScroll: false,
               horizontalScroll: false,
-            ),
+            ).animateOnPageLoad(animationsMap['webViewOnPageLoadAnimation']!),
           ],
         ),
       ),

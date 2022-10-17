@@ -1,10 +1,13 @@
 import '../auth/auth_util.dart';
+import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,7 +19,29 @@ class SignUpWidget extends StatefulWidget {
   _SignUpWidgetState createState() => _SignUpWidgetState();
 }
 
-class _SignUpWidgetState extends State<SignUpWidget> {
+class _SignUpWidgetState extends State<SignUpWidget>
+    with TickerProviderStateMixin {
+  final animationsMap = {
+    'containerOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.elasticOut,
+          delay: 300.ms,
+          duration: 900.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.elasticOut,
+          delay: 300.ms,
+          duration: 900.ms,
+          begin: Offset(71, 0),
+          end: Offset(0, 0),
+        ),
+      ],
+    ),
+  };
   TextEditingController? confirmPasswordController;
 
   late bool confirmPasswordVisibility;
@@ -29,6 +54,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
   @override
   void initState() {
     super.initState();
+
     confirmPasswordController = TextEditingController();
     confirmPasswordVisibility = false;
     emailAddressController = TextEditingController();
@@ -640,7 +666,8 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                         ],
                       ),
                     ),
-                  ),
+                  ).animateOnPageLoad(
+                      animationsMap['containerOnPageLoadAnimation']!),
                 ),
               ],
             ),

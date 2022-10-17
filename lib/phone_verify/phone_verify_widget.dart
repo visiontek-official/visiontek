@@ -1,10 +1,13 @@
 import '../auth/auth_util.dart';
+import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -15,13 +18,36 @@ class PhoneVerifyWidget extends StatefulWidget {
   _PhoneVerifyWidgetState createState() => _PhoneVerifyWidgetState();
 }
 
-class _PhoneVerifyWidgetState extends State<PhoneVerifyWidget> {
+class _PhoneVerifyWidgetState extends State<PhoneVerifyWidget>
+    with TickerProviderStateMixin {
+  final animationsMap = {
+    'columnOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.elasticOut,
+          delay: 300.ms,
+          duration: 900.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.elasticOut,
+          delay: 300.ms,
+          duration: 900.ms,
+          begin: Offset(71, 0),
+          end: Offset(0, 0),
+        ),
+      ],
+    ),
+  };
   TextEditingController? pinCodeController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
+
     pinCodeController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -229,7 +255,8 @@ class _PhoneVerifyWidgetState extends State<PhoneVerifyWidget> {
                           ),
                         ),
                       ],
-                    ),
+                    ).animateOnPageLoad(
+                        animationsMap['columnOnPageLoadAnimation']!),
                   ),
                 ),
               ],

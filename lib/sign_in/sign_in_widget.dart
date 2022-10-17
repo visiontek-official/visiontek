@@ -1,4 +1,5 @@
 import '../auth/auth_util.dart';
+import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -6,6 +7,7 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,7 +19,29 @@ class SignInWidget extends StatefulWidget {
   _SignInWidgetState createState() => _SignInWidgetState();
 }
 
-class _SignInWidgetState extends State<SignInWidget> {
+class _SignInWidgetState extends State<SignInWidget>
+    with TickerProviderStateMixin {
+  final animationsMap = {
+    'columnOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.elasticOut,
+          delay: 300.ms,
+          duration: 900.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.elasticOut,
+          delay: 300.ms,
+          duration: 900.ms,
+          begin: Offset(71, 0),
+          end: Offset(0, 0),
+        ),
+      ],
+    ),
+  };
   TextEditingController? emailAddressController;
   TextEditingController? passwordController;
 
@@ -27,6 +51,7 @@ class _SignInWidgetState extends State<SignInWidget> {
   @override
   void initState() {
     super.initState();
+
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       if (Theme.of(context).brightness == Brightness.dark) {
@@ -625,7 +650,8 @@ class _SignInWidgetState extends State<SignInWidget> {
                               ),
                             ),
                           ],
-                        ),
+                        ).animateOnPageLoad(
+                            animationsMap['columnOnPageLoadAnimation']!),
                       ),
                     ),
                   ),
